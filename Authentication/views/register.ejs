@@ -1,0 +1,20 @@
+<%- include("partials/header", { title: "User Registration", heading: "Register Here" }) %>
+
+<form action="/register" method="POST" class="card shadow p-4 mx-auto" style="max-width: 400px;">
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="regEmail" class="form-label">Email</label>
+    <input type="email" class="form-control" id="regEmail" name="username" placeholder="Enter your email">
+  </div>
+
+  <!-- Password -->
+  <div class="mb-3">
+    <label for="regPassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="regPassword" name="userpassword" placeholder="Enter your password">
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Register</button>
+</form>
+
+<%- include("partials/footer") %>

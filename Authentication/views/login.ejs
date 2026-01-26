@@ -1,0 +1,25 @@
+<%- include("partials/header", { title: "User Login", heading: "Login Here" }) %>
+
+<form action="/login" method="POST" class="card shadow p-4 mx-auto" style="max-width: 400px;">
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="loginEmail" class="form-label">Email</label>
+    <input type="email" class="form-control" id="loginEmail" name="username" placeholder="Enter your email">
+  </div>
+
+  <!-- Password -->
+  <div class="mb-3">
+    <label for="loginPassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="loginPassword" name="userpassword" placeholder="Enter your password">
+  </div>
+
+  <button type="submit" class="btn btn-success w-100">Login</button>
+</form>
+
+ <% if(error) { %>
+     <div class="alert alert-danger mt-3" ><%= error %></div>
+
+   <%}%>
+
+<%- include("partials/footer") %>
