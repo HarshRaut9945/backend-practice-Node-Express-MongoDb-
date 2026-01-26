@@ -61,6 +61,22 @@ router.post('/login', async (req, res) => {
     }
 });
 
+//profile route
+
+router.get('/profile',jwtAuthMiddleware,async(req,res)=>{
+    try{
+        const userData=req.user;
+        console.log("User Data ",userData);
+        const userId=userData.id;
+        const user=await Person.findById(userId);
+        res.status(500).json({error:'Internal Sever Data'});
+
+        
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error:'Internal Server Error'});
+    }
+})
 
 
 router.get('/',async(req,res)=>{
@@ -149,5 +165,8 @@ router.delete('/:id',async(req,res)=>{
         });
      }
 })
+
+
+
 
 module.exports=router;
