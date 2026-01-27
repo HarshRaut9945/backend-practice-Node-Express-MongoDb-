@@ -16,7 +16,7 @@ voting app functionallity
 
 7.user can change their password
 8.user can login with adhar card  number and password
-
+9.Admn can't vote
 --------------------------------------------------------------
 
 Routes
@@ -38,4 +38,4 @@ User Profile:
 Admin Candidate Management:
     /candidates: POST - Create a new candidate.
     /candidates/:candidateId: PUT - Update an existing candidate.
-    /candidates/:candidateId: DELETE - Delete a candidate from the list.
+    /candidates/:candidateId: DELETE - Delete a candidate from the list. 
