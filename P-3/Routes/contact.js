@@ -1,5 +1,5 @@
 import express from 'express'
-import { newContact } from '../controllers/contact.js';
+import { getAllContact, getContactById, newContact, updateContactByid, } from '../controllers/contact.js';
 
 const router=express.Router();
 
@@ -9,5 +9,8 @@ const router=express.Router();
 //@api endpoint - /api/contact/new
 
 router.post('/new',newContact)
-
+router.get('/',getAllContact)
+//get contact by id
+router.get('/:id',getContactById)
+router.put('/:id',updateContactByid)
 export default router;

@@ -1,5 +1,16 @@
 import { Contact } from "../models/Contact.js";
 
+// get all contact
+
+export const getAllContact=async (req,res)=>{
+    const userContac= await Contact.find();
+
+    if(!userContac) return res.json({message:"No Contact Exist",success:false})
+
+        res.json({message:"All Contact Fetched",userContac,success:true})
+}
+
+//create new contact
 export const newContact = async (req, res) => {
     try {
         const { name, email, phone, type } = req.body;
@@ -11,7 +22,6 @@ export const newContact = async (req, res) => {
                 success: false
             });
         }
-
         // create contact
         const saveContact = await Contact.create({
             name,
@@ -35,5 +45,47 @@ export const newContact = async (req, res) => {
         });
     }
 
-    
+
 };
+
+//update contact by id
+export const updateContactByid=async(req,res)=>{
+    const id=req.params.id;
+    const { name, email, phone, type } = req.body;
+
+   let updatecontact=await Contact.findByIdAndUpdate(
+    id,
+    {
+        name,
+        email,
+        phone,
+        type,
+    },
+      {new:true}
+   );
+      if(!updatecontact) return res.json({message:"No Contact Exist",success:false})
+          res.json({message:"Contact uodated sucessfully",updatecontact,success:true})
+
+};
+
+// delete contact by id 
+export const deleteContactByid=async(req,res)=>{
+    const id=req.params.id;
+    const { name, email, phone, type } = req.body;
+
+   let deleteContact=await Contact.findByIdAndDelete(id);
+      if(!deleteContact) return res.json({message:"No Contact Exist",success:false})
+          res.json({message:"Contact deleted sucessfully....",updatecontact,success:true})
+
+};
+
+
+// get contact by id
+
+export const getContactById=async(req,res)=>{
+
+    const id=req.params.id
+    const userContact=await Contact.findById(id);
+     if(!userContact) return res.json({message:"No Contact Find",success:false})
+          res.json({message:" Contact Fetched",userContact,success:true})
+}
