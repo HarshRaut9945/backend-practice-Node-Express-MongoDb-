@@ -75,7 +75,7 @@ export const deleteContactByid=async(req,res)=>{
 
    let deleteContact=await Contact.findByIdAndDelete(id);
       if(!deleteContact) return res.json({message:"No Contact Exist",success:false})
-          res.json({message:"Contact deleted sucessfully....",updatecontact,success:true})
+          res.json({message:"Contact deleted sucessfully....",deleteContact,success:true})
 
 };
 
@@ -88,4 +88,13 @@ export const getContactById=async(req,res)=>{
     const userContact=await Contact.findById(id);
      if(!userContact) return res.json({message:"No Contact Find",success:false})
           res.json({message:" Contact Fetched",userContact,success:true})
+}
+
+
+export const getContactByUserId=async(req,res)=>{
+
+    const id=req.params.id
+    const userContact=await Contact.find({user:id});
+     if(!userContact) return res.json({message:"No Contact Find",success:false})
+          res.json({message:" User Specific  Contact Fetched",userContact,success:true})
 }
